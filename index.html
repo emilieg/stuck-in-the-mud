@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Stuck in the Mud</title>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.theme.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -15,10 +15,10 @@
 <div id="player-scores"> <h5> PLAYER SCORES </h5>
 
 <div id="player1-scores">
-  <span> PLAYER 1: 34pt. </span>
+ PLAYER 1: <span>  34pt. </span>
 </div>
 <div id="player2-scores">
-  <span> PLAYER 2: 50pt. </span>
+ PLAYER 2: <span>  50pt. </span>
 </div>
 </div>
 
@@ -26,16 +26,18 @@
 <button class=".btn" type="button" id="roll-dice">Roll Dice</button>
  </div>
 
+ <br></br>
+
 <div id="dice-board">
-  <div =id="die1"></div>
-  <div =id="die2"></div>
-  <div =id="die3"></div>
-  <div =id="die4"></div>
-  <div =id="die5"></div>
+  <div id="die1" class="dice"></div>
+  <div id="die2" class="dice"></div>
+  <div id="die3" class="dice"></div>
+  <div id="die4" class="dice"></div>
+  <div id="die5" class="dice"></div>
 </div>
+<br></br>
 
-
-<div id="current-roll-score"> CURRENT ROLL: 50pt. </div>
+<div id="current-roll-score"> CURRENT ROLL POINTS: 50pt. </div>
 
 
 <div id="newGame">
@@ -61,7 +63,7 @@
  <!-- loading jQuery UI after lib -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">  </script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
  <script src="script.js"> </script>
 </body>
 </html>
