@@ -1,7 +1,7 @@
 //Global variables
 //DiceBoard
 
-var playerTurn = player1;
+var playerTurn;
 var diceCount = ['','','','','']; //5 dices are available at the start
 var currentRollPoints =[];
 var cleanRoll;
@@ -23,10 +23,9 @@ var rollDice = function(){
   return result;
 }
 
-$( document ).ready(function() {
-  console.log( "document loaded" );
+ 
 
-
+  playerTurn ='player2';
   $('#roll-dice').click(function() {
     //Call Roll Dice function for each die using a for loop
     cleanRoll = true; 
@@ -47,21 +46,32 @@ $( document ).ready(function() {
     if(cleanRoll === true) {
       var turnSum = diceSum(diceCount);
       currentRollPoints.push(turnSum);
-    
+      
       console.log( "The turnSum is: " + turnSum);
       console.log( "The currentRollPoints is: " + currentRollPoints);
     }
     //check if all dice are stuck/equal 2 or 5
-    //then calculate player1Score
+    //then calculate playerScore
     if(cleanRoll === false) {
     playerScore = pointsSum(currentRollPoints);
     console.log("playerScore :" + playerScore);
-    
-        }
-      
+      if (playerTurn === 'player1') {
+          playerScore = $('#player1-scores span').html(playerScore);
+    } else {
+           playerScore = $('#player2-scores span').html(playerScore);
+    } 
+        }     
 
   }) //closing click function
-}); //closing for document_ready f()
+
+
+
+
+
+
+
+
+
 
 
 
