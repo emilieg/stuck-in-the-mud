@@ -30,6 +30,7 @@ var flipPlayerTurn = function() {
         gameOver(playerScore1, playerScore2);
         console.log("Scores: " + gameOver(playerScore1, playerScore2));
         gameLoop = false;
+        $('#roll-dice').attr('disabled','disabled');
     }   else {
     console.log("in flipPlayer Round is: " + roundCount);
     
@@ -42,7 +43,7 @@ var flipPlayerTurn = function() {
     turnSum2 = 0;
     countLoses = 0;
     $('.dice').html("");
-    $('.dice').css("border-color", "black")
+    $('.dice').css("background-color", "")
 
     }
 };
@@ -63,19 +64,22 @@ $('#roll-dice').click(function() {
         $('#player-turn span').html(playerTurn);
         $('#current-roll-score span').html(turnSum1);
         $('#current-roll-score span').html(turnSum2);
-
+// 
         console.log("diceAvail " + diceAvail);
         cleanRoll = true;
         
 
         for (i = 0; i < diceCount.length; i++) {
-
+            console.log(diceCount[i]);
             if (diceAvail[i] === true) {
 
                 diceCount[i] = rollDice();
 
-                console.log(diceCount[i]);
                 diceId = $('#die' + (i + 1)).html(diceCount[i]);
+                $(diceId).effect("highlight", {}, 1500);
+
+                
+                
 
                 if (diceCount[i] === 2 || diceCount[i] === 5) {
                     diceAvail[i] = false;
@@ -125,8 +129,7 @@ $('#roll-dice').click(function() {
             }
             if (diceNotAvail === diceAvail.length) {
                 
-                // gameOver();
-                // console.log("the winner is: " + winner);
+
                 flipPlayerTurn();
                 $('#player-turn span').html(playerTurn);
 
@@ -159,7 +162,9 @@ $('#new-game').click(function() {
 
 
 function newGame() {
+    $('#roll-dice').removeAttr('disabled');
     gameLoop = true;
+    roundCount = 1;
     playerTurn = 'player1';
     $('#player-turn span').html(playerTurn);
     $('#current-roll-score span').html('0');

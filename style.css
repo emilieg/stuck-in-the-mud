@@ -1,17 +1,44 @@
+body {
+  background-image: url("wood-background5.jpg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+
 h1 {
-  color: red;
+  margin-top: 50px;
+  color: white;
+  text-align: center;
+  font-size: 50px;
+  text-shadow: #444 3px 3px 6px;
+  font-family: 'Slackey', cursive;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.trackers {
+  text-align: center;
+}
+
+#dice-board {
+  border: 2px solid white;
+  width: 400px;
+  height: 150px;
+  margin-top: 100px;
+ /* background-color: white;*/
 }
 
 .dice {
-  width: 50px;
-  height: 50px;
-  background-color: gray;
-  border: 1px solid black;
-  color: black;
-  display: inline-block;
-  font-size: 20px;
-  
+  display: inline;
+  font-size: 10rem; 
+  margin-left: 9px; 
+  /*text-align: center;  */ 
 }
+
 
 
 /*CSS 3 animation */
