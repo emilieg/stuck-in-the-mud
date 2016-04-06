@@ -44,7 +44,7 @@ var flipPlayerTurn = function() {
     turnSum2 = 0;
     countLoses = 0;
     $('.dice').html("");
-    $('.dice').css("background-color", "")
+    $('.dice').css("color", "")
 
     }
 };
@@ -126,7 +126,7 @@ $('#roll-dice').click(function() {
 
                 if (diceCount[i] === 2 || diceCount[i] === 5) {
                     diceAvail[i] = false;
-                    $(diceId).css('background-color', 'red');
+                    $(diceId).css('color', 'red');
                     cleanRoll = false;
                 }
                 
@@ -207,19 +207,21 @@ function newGame() {
     gameLoop = true;
     roundCount = 1;
     playerTurn = 'player1';
-    $('#player-turn span').html(playerTurn);
+    $('#player-turn span').html('player1');
     $('#current-roll-score span').html('0');
-    $('#round-count span').html('0')
+    $('#round-count span').html('0');
+    $('#player1-scores span').html('');
+    $('#player2-scores span').html('');
     diceCount = ['', '', '', '', ''];
     diceAvail = [true, true, true, true, true];
     playerScore = 0;
-    $('.scores').html("");
+    // $('.scores').html("");
     currentRollPoints = [];
     cleanRoll = true;
     turnSum = 0;
     countLoses = 0;
     $('.dice').html("");
-    $('.dice').css("border-color", "black")
+    $('.dice').css("color", "")
 };
 
 
