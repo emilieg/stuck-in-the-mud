@@ -16,6 +16,9 @@ var countLoses = 0;
 var roundCount = 1;
 var winner;
 var gameLoop = true;
+// var animationBounceIn = 'bounceInDown';
+var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
 
 var flipPlayerTurn = function() {
 
@@ -150,6 +153,9 @@ function gameOver(playerScore1, playerScore2){
         winner = 'player2';
     }
     $('#winner').html("THE WINNER IS:" + winner);
+    $('#winner').addClass('animated bounceInDown').one(animationEnd, function(){
+        $(this).removeClass(bounceInDown);
+    });
     return winner;
 }
 
@@ -178,7 +184,7 @@ function newGame() {
     turnSum = 0;
     countLoses = 0;
     $('.dice').html("");
-    $('.dice').css("border-color", "black")
+    $('.dice').css("border-color", "black");
 };
 
 

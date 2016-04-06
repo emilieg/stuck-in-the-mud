@@ -17,8 +17,13 @@ var countLoses = 0;
 var roundCount = 1;
 var winner;
 var gameLoop = true;
+// var animationBounceIn = bounceInDown;
+var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 
 var flipPlayerTurn = function() {
+    $('#player-turn span').addClass('animated flash').one(animationEnd, function(){
+    $(this).removeClass('animated flash');
+    });
 
     if (playerTurn === 'player1') {
         playerTurn = 'player2'; 
@@ -49,11 +54,6 @@ var flipPlayerTurn = function() {
     }
 };
 
-//Roll Dice function
-// var rollDice = function() {
-//     result = Math.floor(Math.random() * 6 + 1);
-//     return result;
-// };
 
 var rollDice = function() {
     
@@ -114,12 +114,23 @@ $('#roll-dice').click(function() {
             console.log(diceCount[i]);
             if (diceAvail[i] === true) {
 
+                
+            
+
+
                 diceCount[i] = rollDice();
-           
 
                 diceId = $('#die' + (i + 1)).html(output);
+                
+                // $('#die1').addClass('animated fadeIn').one(animationEnd, function(){
+                // $(this).removeClass('animated fadeIn');
+                // });
+                // console.log($(diceId));
 
-                // $(diceId).effect("highlight", {}, 1500);
+
+                
+
+                
 
                 
                 
@@ -128,7 +139,9 @@ $('#roll-dice').click(function() {
                     diceAvail[i] = false;
                     $(diceId).css('color', 'red');
                     cleanRoll = false;
-                }
+
+                } 
+
                 
             }
         }
@@ -141,7 +154,9 @@ $('#roll-dice').click(function() {
             $('#current-roll-score span').html(turnSum1);
             
             playerScore1 = pointsSum(currentRollPoints1);
+            
             $('#player1-scores span').html(playerScore1);
+
             console.log("playerScore1 "+  playerScore1);
 
         } else if (cleanRoll === true && playerTurn === 'player2') {
@@ -152,7 +167,9 @@ $('#roll-dice').click(function() {
             $('#current-roll-score span').html(turnSum2);
             
             playerScore2 = pointsSum(currentRollPoints2);
+            
             $('#player2-scores span').html(playerScore2);
+
             console.log("playerScore2 "+  playerScore2);
             
         }
@@ -173,6 +190,10 @@ $('#roll-dice').click(function() {
 
                 flipPlayerTurn();
                 $('#player-turn span').html(playerTurn);
+                // $('#player-turn span').addClass('animated flash').one(animationEnd, function(){
+                // $(this).removeClass('animated bounceInDown');
+                // });
+
 
                 
             }
@@ -190,7 +211,11 @@ function gameOver(playerScore1, playerScore2){
     else {
         winner = 'player2';
     }
+    $("#winner").show();
     $('#winner').html("THE WINNER IS:" + winner);
+    $('#winner').addClass('animated bounceInDown').one(animationEnd, function(){
+        $(this).removeClass('animated bounceInDown');
+    });
     return winner;
 }
 
@@ -198,6 +223,7 @@ function gameOver(playerScore1, playerScore2){
 
 
 $('#new-game').click(function() {
+    $("#winner").hide();
     newGame();
 });
 
@@ -221,7 +247,8 @@ function newGame() {
     turnSum = 0;
     countLoses = 0;
     $('.dice').html("");
-    $('.dice').css("color", "")
+    $('.dice').css("color", "");
+
 };
 
 

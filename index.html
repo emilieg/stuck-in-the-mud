@@ -8,44 +8,60 @@
 
   <link href='https://fonts.googleapis.com/css?family=Monofett|Faster+One|Luckiest+Guy|Sigmar+One|Fontdiner+Swanky|Slackey|Schoolbell|Permanent+Marker|Play:400,700' rel='stylesheet' type='text/css'>
 
+  <link rel="stylesheet" href="animate.css">
+
   <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
   <div class="container">
     <div id="game-board">
+      <!-- TOP PAGE ROWS  -->
       <div class="row">
         <div id="title" class="col-md-12">
-          <h1> STUCK IN THE MUD </h1>
+          <ul class="nav">
+            <li><h1> STUCK IN THE MUD </h1> </li>
+
+            <li><span class="glyph-span"><a href="#"><span class="glyphicon glyphicon-info-sign pull-right"></span></a></span></li>
+          </ul>
         </div>
       </div>
+
       <div class="row">
-        <div id="round-count" class="col-md-12 text-center">  ROUND <span> 0 </span> OF 3 </div> 
-        <div id="player-turn" class="col-md-12 text-center"> PLAYER TURN:  <span> </span> </div>
+        <div id="round-count" class="col-md-12 text-center"> ROUND <span class="text-uppercase"> 0 </span> OF 3 </div> 
+        <div id="player-turn" class="col-md-12 text-center"> PLAYER TURN:  <span class="text-uppercase"> </span> </div>
       </div>
       
-
+      <br></br>
+      <br></br>
+      <br></br>
 
       <div class="row">
-        <div class="container col-lg-5">
-        <div id="player1-scores" class="col-med-4">
-         PLAYER 1: <span>   </span>
+       <div id="winner" class="col-lg-12 text-uppercase"> </div>
+     </div>
+
+     <div class="row">
+      <div class="container col-lg-6">
+       <div class="scores"> <span> PLAYER SCORES: </span> </div>
+       <div id="player1-scores">
+         PLAYER 1: <span class="text-uppercase">   </span>
        </div>
 
 
-       <div id="player2-scores" class="col-med-4">
-         PLAYER 2: <span>   </span>
+       <div id="player2-scores">
+         PLAYER 2: <span class="text-uppercase">   </span>
        </div>
 
-
-       <div id="newGame" class="col-med-4">
+       <br></br>
+       <div id="newGame">
         <button class="btn btn-default btn-lg " type="button" id="new-game">NEW GAME</button>
       </div>
-    
+    </div>
 
 
-    <div class="container col-lg-5 col-lg-offset-7">
-    <div id="dice-board" class="col-md-4"> 
+
+    <div class="container col-lg-6">
+      <div id="dice-board"> 
         <div id="die1" class="dice"></div>
         <div id="die2" class="dice"></div>
         <div id="die3" class="dice"></div>
@@ -54,32 +70,20 @@
       </div>
 
 
-      <div id="current-roll-score" class="col-md-4 col-md-offset-7 text-center"> CURRENT ROLL SCORE: <span> 0 </span> </div>
+      <div id="current-roll-score" class="text-center"> CURRENT ROLL SCORE: <span> 0 </span> </div>
 
 
-      <div id="rollDice" class="col-md-4 col-md-offset-7 text-center">
-        <button class="btn btn-danger btn-lg active" type="button" id="roll-dice">ROLL DICE</button>
+      <div id="rollDice" class="text-center">
+        <button class="btn btn-danger btn-lg active" type="button" id="roll-dice"> ROLL DICE</button>
       </div>
     </div>
-  </div>
 
-
-
-
-
-  <div class="row">
-   <div id="winner" class="col-lg-12"> </div>
- </div>
-
-
-
-
-
+  </div> <!-- ROW CLOSE -->
 
 
 </div>
 </div>
-<!-- loading jQuery UI after lib -->
+<!-- loading jQuery UI after lib  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">  </script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
