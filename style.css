@@ -4,7 +4,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   color: white;
-  background-position-y: 28px;
+  background-position-y: 40px;
 }
 
 /*.container {
@@ -177,3 +177,9 @@ outline: none;
   line-height: 30px;
 
 }
+
+.centerBlock {
+  display: table;
+  margin: 0 auto;
+  margin-bottom: -10px;
+            }

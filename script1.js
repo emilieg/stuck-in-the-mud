@@ -4,8 +4,6 @@
 var player1;
 
 var player2;
-
-// var playerTurn = $('#p1').html();
 var playerTurn;
 var diceCount = ['', '', '', '', '']; //5 dices are available at the start
 var diceAvail = [true, true, true, true, true];
@@ -34,7 +32,8 @@ swal({  title: "Player1",
         closeOnConfirm: false,
         animation: "slide-from-top",
         inputPlaceholder: "Enter your Name",
-        customClass: 'sweet' 
+        customClass: 'sweet',
+        confirmButtonColor:  "#FF0000" 
       },
 
       function(inputValue1) {
@@ -62,7 +61,8 @@ function sweetAlert2(){
         closeOnConfirm: true,
         animation: "slide-from-top",
         inputPlaceholder: "Enter your Name",
-        customClass: 'sweet' },
+        customClass: 'sweet',
+        confirmButtonColor:  "#FF0000" },
 
         function(inputValue2) {
         $('#p2').text(inputValue2);
@@ -165,7 +165,7 @@ $('#roll-dice').click(function() {
 
         $('#round-count span').html(roundCount);
 
-        // $('#player-turn span').html(playerTurn);
+       
 
         $('#current-roll-score span').html(turnSum1);
         $('#current-roll-score span').html(turnSum2);
@@ -186,8 +186,8 @@ $('#roll-dice').click(function() {
 
                 diceId = $('#die' + (i + 1)).html(output);
                 
-                // $('#die1').addClass('animated fadeIn').one(animationEnd, function(){
-                // $(this).removeClass('animated fadeIn');
+                // $('#die1').addClass('animated bounceInDown').one(animationEnd, function(){
+                // $(this).removeClass('animated bounceInDown');
                 // });
                 // console.log($(diceId));
 
@@ -286,6 +286,55 @@ $('#new-game').click(function() {
 
 
 function newGame() {
+  swal({  title: "Player1",
+        text: 'Enter your Name',
+        type: "input",
+        showCancelButton: true,
+        closeOnConfirm: false,
+        animation: "slide-from-top",
+        inputPlaceholder: "Enter your Name",
+        customClass: 'sweet',
+        confirmButtonColor:  "#FF0000" 
+      },
+
+      function(inputValue1) {
+        $('#p1').text(inputValue1);
+        player1 = inputValue1;
+        sweetAlert2();
+        $('#player-turn span').text(inputValue1);
+
+        playerTurn = inputValue1;
+        console.log(player1);
+        return inputValue1;
+      }
+      
+  )
+
+$('#player2-scores').on('click', function(){
+  sweetAlert2();
+})
+
+function sweetAlert2(){
+  swal({  title: "Player2",
+        text: 'Enter your Name',
+        type: "input",
+        showCancelButton: true,
+        closeOnConfirm: true,
+        animation: "slide-from-top",
+        inputPlaceholder: "Enter your Name",
+        customClass: 'sweet',
+        confirmButtonColor:  "#FF0000" },
+
+        function(inputValue2) {
+        $('#p2').text(inputValue2);
+        player2 = inputValue2;
+        console.log(inputValue2);
+        return inputValue2;
+      }
+      
+
+)
+}
     $('#roll-dice').removeAttr('disabled');
     gameLoop = true;
     roundCount = 1;
@@ -308,6 +357,7 @@ function newGame() {
 
 };
 
+//how to play the game modal
 $('#glyphicon').click(function(){
   $('#myModal').modal('show');
 });
