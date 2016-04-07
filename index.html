@@ -3,10 +3,11 @@
 <head>
 
   <title>Stuck in the Mud</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.theme.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
   <link href='https://fonts.googleapis.com/css?family=Monofett|Faster+One|Luckiest+Guy|Sigmar+One|Fontdiner+Swanky|Slackey|Schoolbell|Permanent+Marker|Play:400,700' rel='stylesheet' type='text/css'>
+  
   <link rel="stylesheet" type="text/css" href="file:///Users/emiliegerber/Code/sweetalert-master/dist/sweetalert.css">
 
   <link rel="stylesheet" href="animate.css">
@@ -23,7 +24,7 @@
           <ul class="nav">
             <li><h1> STUCK IN THE MUD </h1> </li>
 
-            <li><span class="glyph-span"><a href="howto.html"><span class="glyphicon glyphicon-info-sign pull-right"></span></a></span></li>
+            <li><span class="glyph-span"><span id="glyphicon" class="glyphicon glyphicon-info-sign pull-right "></span></span></li>
           </ul>
         </div>
       </div>
@@ -33,9 +34,9 @@
         <div id="player-turn" class="col-md-12 text-center"> PLAYER TURN:  <span class="text-uppercase"> </span> </div>
       </div>
       
-      <br></br>
-      <br></br>
-      <br></br>
+      <br>
+      <br>
+      <br>
 
       <div class="row">
        <div id="winner" class="col-lg-12 text-uppercase"> </div>
@@ -44,13 +45,17 @@
      <div class="row">
       <div class="container col-lg-6">
        <div class="scores"> <span> PLAYER SCORES: </span> </div>
-       <div id="player1-scores"> <span class="text-uppercase">   </span>
-         <div id="p1"> PLAYER 1:  </div>
+
+       <div>
+        <span id="p1">PLAYER 1</span>:
+        <span class="text-uppercase" id="player1-scores"></span>
        </div>
-
-
-       <div id="player2-scores"> <span class="text-uppercase">   </span>
-         <div id="p2"> PLAYER 2:  </div> 
+       <!-- div id="player1-scores">  -->
+         
+       <!-- </div> -->
+       <div >
+       <span id="p2"> PLAYER 2 </span>: 
+        <span class="text-uppercase" id="player2-scores"> </span> 
        </div>
 
        <br></br>
@@ -81,14 +86,52 @@
 
   </div> <!-- ROW CLOSE -->
 
+</div>
+</div>
 
+<!-- MODAL -->
+
+<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button> -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">GAME RULES</h4>
+      </div>
+      <div class="modal-body">
+        <p>The first player rolls all five dice. If any 2s or 5s are rolled, no points are scored for this throw. If no 2s or 5s are rolled, the total is added to the player's score. </p>
+          <p>
+          Any 2s and 5s become STUCK IN THE MUD, and only the remaining dice are rolled. Again, if any 2s or 5s are thrown, no points are scored. If there are no 2s or 5s, the total is added to the previous score.</p>
+          <p>
+          Continue in this way until all the dice are STUCK IN THE MUD. After the score is totaled, play passes to the next player.
+
+          There are a total of 3 round of play. </p>
+
+      </div>
+
+    </div>
+  <!-- /.modal-content -->
+  </div>
+<!-- /.modal-dialog -->
 </div>
-</div>
+<!-- /.modal -->
+
+
+
+
+
 <!-- loading jQuery UI after lib  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">  </script>
 <script src="file:///Users/emiliegerber/Code/sweetalert-master/dist/sweetalert.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
 <script src="script1.js"> </script>
 </body>
 </html>

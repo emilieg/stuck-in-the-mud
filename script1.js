@@ -1,8 +1,12 @@
 //Global variables
 //DiceBoard
 
-var playerTurn = $('#p1').html();;
-// var playerTurn;
+var player1;
+
+var player2;
+
+// var playerTurn = $('#p1').html();
+var playerTurn;
 var diceCount = ['', '', '', '', '']; //5 dices are available at the start
 var diceAvail = [true, true, true, true, true];
 var diceId;
@@ -19,11 +23,8 @@ var roundCount = 1;
 var winner;
 var gameLoop = true;
 var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-// var player1 = $('#p1').text();
-// var player2 = $('#p2').text();
-var player1 = $('#p1').html();
 
-var player2 = $('#p2').html();
+
 
 
 swal({  title: "Player1",
@@ -40,6 +41,9 @@ swal({  title: "Player1",
         $('#p1').text(inputValue1);
         player1 = inputValue1;
         sweetAlert2();
+        $('#player-turn span').text(inputValue1);
+
+        playerTurn = inputValue1;
         console.log(player1);
         return inputValue1;
       }
@@ -70,6 +74,9 @@ function sweetAlert2(){
 
 )
 }
+
+
+
 
 
 var flipPlayerTurn = function() {
@@ -157,7 +164,9 @@ $('#roll-dice').click(function() {
         console.log("playerTurn after click " + playerTurn);
 
         $('#round-count span').html(roundCount);
-        $('#player-turn span').html(playerTurn);
+
+        // $('#player-turn span').html(playerTurn);
+
         $('#current-roll-score span').html(turnSum1);
         $('#current-roll-score span').html(turnSum2);
 
@@ -203,8 +212,7 @@ $('#roll-dice').click(function() {
             $('#current-roll-score span').html(turnSum1);
             
             playerScore1 = pointsSum(currentRollPoints1);
-            
-            $('#player1-scores span').html(playerScore1); //
+            $('#player1-scores').html(playerScore1); //
 
             console.log("playerScore1 "+  playerScore1);
 
@@ -217,7 +225,7 @@ $('#roll-dice').click(function() {
             
             playerScore2 = pointsSum(currentRollPoints2);
             
-            $('#player2-scores span').html(playerScore2);
+            $('#player2-scores').html(playerScore2);
 
             console.log("playerScore2 "+  playerScore2);
             
@@ -285,8 +293,8 @@ function newGame() {
     $('#player-turn span').html(player1);
     $('#current-roll-score span').html('0');
     $('#round-count span').html('0');
-    $('#player1-scores span').html('');
-    $('#player2-scores span').html('');
+    $('#player1-scores').html('');
+    $('#player2-scores').html('');
     diceCount = ['', '', '', '', ''];
     diceAvail = [true, true, true, true, true];
     playerScore = 0;
@@ -300,8 +308,9 @@ function newGame() {
 
 };
 
-
-
+$('#glyphicon').click(function(){
+  $('#myModal').modal('show');
+});
 
 function diceSum(diceCount) {
     var total = 0;
@@ -328,3 +337,5 @@ function pointsSum(currentRollPoints) {
 
     return total;
 }
+
+

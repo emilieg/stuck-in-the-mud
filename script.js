@@ -103,7 +103,7 @@ $('#roll-dice').click(function() {
             $('#current-roll-score span').html(turnSum1);
             
             playerScore1 = pointsSum(currentRollPoints1);
-            $('#player1-scores span').html(playerScore1);
+            $('#player1-scores').html(playerScore1);
             console.log("playerScore1 "+  playerScore1);
 
         } else if (cleanRoll === true && playerTurn === 'player2') {
