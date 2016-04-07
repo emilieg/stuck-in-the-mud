@@ -16,7 +16,7 @@ var countLoses = 0;
 var roundCount = 1;
 var winner;
 var gameLoop = true;
-// var animationBounceIn = 'bounceInDown';
+var animationBounceIn = 'bounceInDown';
 var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 
 

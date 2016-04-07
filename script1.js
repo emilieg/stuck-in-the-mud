@@ -1,7 +1,8 @@
 //Global variables
 //DiceBoard
 
-var playerTurn = 'player1';
+var playerTurn = $('#p1').html();;
+// var playerTurn;
 var diceCount = ['', '', '', '', '']; //5 dices are available at the start
 var diceAvail = [true, true, true, true, true];
 var diceId;
@@ -17,19 +18,70 @@ var countLoses = 0;
 var roundCount = 1;
 var winner;
 var gameLoop = true;
-// var animationBounceIn = bounceInDown;
 var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+// var player1 = $('#p1').text();
+// var player2 = $('#p2').text();
+var player1 = $('#p1').html();
+
+var player2 = $('#p2').html();
+
+
+swal({  title: "Player1",
+        text: 'Enter your Name',
+        type: "input",
+        showCancelButton: true,
+        closeOnConfirm: false,
+        animation: "slide-from-top",
+        inputPlaceholder: "Enter your Name",
+        customClass: 'sweet' 
+      },
+
+      function(inputValue1) {
+        $('#p1').text(inputValue1);
+        player1 = inputValue1;
+        sweetAlert2();
+        console.log(player1);
+        return inputValue1;
+      }
+      
+  )
+
+$('#player2-scores').on('click', function(){
+  sweetAlert2();
+})
+
+function sweetAlert2(){
+  swal({  title: "Player2",
+        text: 'Enter your Name',
+        type: "input",
+        showCancelButton: true,
+        closeOnConfirm: true,
+        animation: "slide-from-top",
+        inputPlaceholder: "Enter your Name",
+        customClass: 'sweet' },
+
+        function(inputValue2) {
+        $('#p2').text(inputValue2);
+        player2 = inputValue2;
+        console.log(inputValue2);
+        return inputValue2;
+      }
+      
+
+)
+}
+
 
 var flipPlayerTurn = function() {
     $('#player-turn span').addClass('animated flash').one(animationEnd, function(){
     $(this).removeClass('animated flash');
     });
 
-    if (playerTurn === 'player1') {
-        playerTurn = 'player2'; 
+    if (playerTurn === player1) {
+        playerTurn = player2; 
     } else {
         roundCount = roundCount + 1; //count game runs 
-        playerTurn ='player1'; 
+        playerTurn = player1; 
     }
     console.log("roundCound: " + roundCount)
     if (roundCount === 4) {
@@ -101,13 +153,16 @@ $('#roll-dice').click(function() {
             return;
         }
         //Call Roll Dice function for each die using a for loop
+
+        console.log("playerTurn after click " + playerTurn);
+
         $('#round-count span').html(roundCount);
         $('#player-turn span').html(playerTurn);
         $('#current-roll-score span').html(turnSum1);
         $('#current-roll-score span').html(turnSum2);
 
         console.log("diceAvail " + diceAvail);
-        cleanRoll = true;
+                cleanRoll = true;
         
 
         for (i = 0; i < diceCount.length; i++) {
@@ -127,12 +182,6 @@ $('#roll-dice').click(function() {
                 // });
                 // console.log($(diceId));
 
-
-                
-
-                
-
-                
                 
 
                 if (diceCount[i] === 2 || diceCount[i] === 5) {
@@ -145,7 +194,7 @@ $('#roll-dice').click(function() {
                 
             }
         }
-        if (cleanRoll === true && playerTurn === 'player1') {
+        if (cleanRoll === true && playerTurn === player1) {
             turnSum1 = diceSum(diceCount);
             currentRollPoints1.push(turnSum1);
         
@@ -155,11 +204,11 @@ $('#roll-dice').click(function() {
             
             playerScore1 = pointsSum(currentRollPoints1);
             
-            $('#player1-scores span').html(playerScore1);
+            $('#player1-scores span').html(playerScore1); //
 
             console.log("playerScore1 "+  playerScore1);
 
-        } else if (cleanRoll === true && playerTurn === 'player2') {
+        } else if (cleanRoll === true && playerTurn === player2) {
             turnSum2 = diceSum(diceCount);
             currentRollPoints2.push(turnSum2);
             console.log("turnSum player2 " + turnSum2);
@@ -206,10 +255,10 @@ $('#roll-dice').click(function() {
 function gameOver(playerScore1, playerScore2){
     
     if(playerScore1 > playerScore2) {
-        winner = 'player1';
+        winner = player1;
     }
     else {
-        winner = 'player2';
+        winner = player2;
     }
     $("#winner").show();
     $('#winner').html("THE WINNER IS:" + winner);
@@ -232,8 +281,8 @@ function newGame() {
     $('#roll-dice').removeAttr('disabled');
     gameLoop = true;
     roundCount = 1;
-    playerTurn = 'player1';
-    $('#player-turn span').html('player1');
+    playerTurn = player1;
+    $('#player-turn span').html(player1);
     $('#current-roll-score span').html('0');
     $('#round-count span').html('0');
     $('#player1-scores span').html('');
