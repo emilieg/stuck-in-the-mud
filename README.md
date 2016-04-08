@@ -1,5 +1,7 @@
-# stuck-in-the-mud - Dice Game
+# Stuck in the Mud - Dice Game by Emilie Gerber
 http://emilieg.github.io/stuck-in-the-mud/
+
+
 
 The first player rolls all five dice. If any 2s or 5s are rolled, no points are scored for this throw.
 If no 2s or 5s are rolled, the total is added to the player's score. 
@@ -8,4 +10,10 @@ Again, if any 2s or 5s are thrown, no points are scored. If there are no 2s or 5
 Continue in this way until all the dice are STUCK IN THE MUD. 
 After the score is totaled, play passes to the next player.
 There are 3 rounds of play.
+
+Technologies used:
+Javascript
+jQuery 
+
+
 
