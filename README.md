@@ -12,8 +12,10 @@ After the score is totaled, play passes to the next player.
 There are 3 rounds of play.
 
 Technologies used:
-Javascript
+Javascript &
 jQuery 
+
+found game here: http://www.activityvillage.co.uk/stuck-in-the-mud
 
 
 
