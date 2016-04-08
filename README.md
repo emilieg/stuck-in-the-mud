@@ -18,4 +18,4 @@ jQuery
 found game here: http://www.activityvillage.co.uk/stuck-in-the-mud
 
 
-
+I need to refactor the code and break up some of the long functions into shorter helper functions. Also, I would like to make the layout responsive and add animation to the dice. 
