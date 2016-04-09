@@ -7,14 +7,6 @@ body {
   background-position-y: 40px;
 }
 
-/*.container {
-  background-image: url("wood-background5.jpg");
-  background-size: 90% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white;
-}
-*/
 .sweet {
   color: black;
 }
@@ -79,7 +71,6 @@ h1 {
 }
 
 .scores {
-  /*margin-top: 10px;*/
   font-family: 'Permanent Marker', cursive;
   font-weight: 300;
   font-size: 25px;
@@ -89,12 +80,9 @@ h1 {
 }
 
 #dice-board {
-/*  border: 2px solid white;*/
   width: 400px;
   height: 150px;
   margin-left: 70px;
-/*  margin-top: 80px;*/
- /* background-color: white;*/
 }
 
 
@@ -103,10 +91,6 @@ h1 {
   display: inline;
   font-size: 10rem; 
   margin-left: 13px; 
-  /*text-align: center;  */
-/*  -webkit-animation-duration: .5s;
-  -webkit-animation-delay: 1s;*/
-/*  -webkit-animation-iteration-count: infinite;*/
 } 
 
 
@@ -146,9 +130,6 @@ outline: none;
 
 }
  
-
-
-
 #player1-scores {
   margin-top: 10px;
   font-family: 'Permanent Marker', cursive;
@@ -183,3 +164,144 @@ outline: none;
   margin: 0 auto;
   margin-bottom: -10px;
             }
+
+
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+ }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) { 
+
+ }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+h1 {
+  font-size: 35px;
+}
+.glyphicon {
+  font-size: 20px;
+}
+#round-count {
+  font-size: 25px;
+}
+#player-turn {
+  font-size: 25px;
+}
+.scores {
+  font-size: 25px;
+}
+#current-roll-score {
+  font-size: 20px;
+}
+#p1 {
+
+  font-size: 25px;
+}
+
+#p2 {
+
+  font-size: 25px;
+}
+ 
+#player1-scores {
+
+  font-size: 25px;
+}
+
+#player2-scores {
+
+  font-size: 25px;
+}
+
+.btn-responsive {
+ font-size: 97%;
+ white-space: normal;
+  padding:4px 9px;
+  line-height: 1.2;
+  border-radius:3px;
+}
+
+#dice-board {
+  width: 767px;
+  height: 100px;
+}
+
+.dice {
+  display: inline;
+  font-size: 8rem; 
+} 
+
+
+
+ }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+
+h1 {
+  font-size: 20px;
+}
+.glyphicon {
+  font-size: 10px;
+}
+#round-count {
+  font-size: 15px;
+}
+#player-turn {
+  font-size: 12px;
+}
+.scores {
+  font-size: 15px;
+}
+#current-roll-score {
+  font-size: 12px;
+}
+
+#p1 {
+
+  font-size: 12px;
+}
+
+#p2 {
+
+  font-size: 12px;
+}
+ 
+#player1-scores {
+
+  font-size: 15px;
+}
+
+#player2-scores {
+
+  font-size: 15px;
+}
+
+.btn-responsive {
+ font-size: 85%;
+ white-space: normal;
+  padding:2px 4px;
+  line-height: 1;
+  border-radius:3px;
+}
+
+#dice-board {
+  width: 480px;
+  height: 100px;
+  margin-left: 50px
+}
+
+.dice {
+  display: inline;
+  font-size: 5rem; 
+} 
+
+}
+
+
+
+}
