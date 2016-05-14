@@ -1,3 +1,5 @@
+/*@media (min-width: 600px) { */
+
 body {
   background-image: url("wood-background5.jpg");
   background-size: 97% 100%;
@@ -80,9 +82,10 @@ h1 {
 }
 
 #dice-board {
-  width: 400px;
+  width: 450px;
   height: 150px;
-  margin-left: 70px;
+  margin-left: 8%;
+ text-align: center;
 }
 
 
@@ -164,7 +167,7 @@ outline: none;
   margin: 0 auto;
   margin-bottom: -10px;
             }
-
+}
 
 
 /* Large desktop */
@@ -173,14 +176,25 @@ outline: none;
  }
  
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) { 
 
- }
+
  
+ 
+
+
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) { 
+/*@media (max-width: 767px)  { */
+
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+
 h1 {
   font-size: 35px;
+  margin-top: 90px;
 }
 .glyphicon {
   font-size: 20px;
@@ -228,6 +242,7 @@ h1 {
 #dice-board {
   width: 767px;
   height: 100px;
+  margin-left: 125px;
 }
 
 .dice {
@@ -244,6 +259,7 @@ h1 {
 
 h1 {
   font-size: 20px;
+  margin-top: 80px;
 }
 .glyphicon {
   font-size: 10px;
@@ -291,8 +307,8 @@ h1 {
 
 #dice-board {
   width: 480px;
-  height: 100px;
-  margin-left: 50px
+  height: 90px;
+  margin-left: -95px
 }
 
 .dice {

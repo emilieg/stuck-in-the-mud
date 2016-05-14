@@ -58,7 +58,6 @@ var rollDice = function() {
 };
 
 $('#roll-dice').click(function() {
-
         if(gameLoop === false) {
             return;
         }
@@ -67,85 +66,55 @@ $('#roll-dice').click(function() {
         $('#player-turn span').html(playerTurn);
         $('#current-roll-score span').html(turnSum1);
         $('#current-roll-score span').html(turnSum2);
-// 
-        console.log("diceAvail " + diceAvail);
+
         cleanRoll = true;
         
-
         for (i = 0; i < diceCount.length; i++) {
             console.log(diceCount[i]);
             if (diceAvail[i] === true) {
-
                 diceCount[i] = rollDice();
-
                 diceId = $('#die' + (i + 1)).html(diceCount[i]);
                 $(diceId).effect("highlight", {}, 1500);
-
-                
-                
 
                 if (diceCount[i] === 2 || diceCount[i] === 5) {
                     diceAvail[i] = false;
                     $(diceId).css('border-color', 'red');
                     cleanRoll = false;
                 }
-                //else statement here? 
-                // else if (diceAvail[i] === false && diceAvail[i] === diceAvail[i]) {
-                //   flipPlayerTurn ();
             }
         }
         if (cleanRoll === true && playerTurn === 'player1') {
             turnSum1 = diceSum(diceCount);
-            currentRollPoints1.push(turnSum1);
-        
-            console.log("turnSum player1 " + turnSum1);
-            
-            $('#current-roll-score span').html(turnSum1);
-            
+            currentRollPoints1.push(turnSum1);            
+            $('#current-roll-score span').html(turnSum1);          
             playerScore1 = pointsSum(currentRollPoints1);
             $('#player1-scores').html(playerScore1);
-            console.log("playerScore1 "+  playerScore1);
 
         } else if (cleanRoll === true && playerTurn === 'player2') {
             turnSum2 = diceSum(diceCount);
             currentRollPoints2.push(turnSum2);
-            console.log("turnSum player2 " + turnSum2);
-            
-            $('#current-roll-score span').html(turnSum2);
-            
+            $('#current-roll-score span').html(turnSum2);       
             playerScore2 = pointsSum(currentRollPoints2);
             $('#player2-scores span').html(playerScore2);
-            console.log("playerScore2 "+  playerScore2);
             
         }
-
-        
 
         //check if all dice are stuck
         //then calculate playerScore
         var diceNotAvail = 0;
         for (i = 0; i < diceAvail.length; i++) {
-
             if (diceAvail[i] === false) {
                 diceNotAvail++;
-
             }
-            if (diceNotAvail === diceAvail.length) {
-                
-
+            if (diceNotAvail === diceAvail.length) {  
                 flipPlayerTurn();
-                $('#player-turn span').html(playerTurn);
-
-                
+                $('#player-turn span').html(playerTurn);      
             }
-
         }
-
     }) //closing click function
 
 
 function gameOver(playerScore1, playerScore2){
-    
     if(playerScore1 > playerScore2) {
         winner = 'player1';
     }
@@ -160,14 +129,12 @@ function gameOver(playerScore1, playerScore2){
 }
 
 
-
-
 $('#new-game').click(function() {
     newGame();
 });
 
 
-function newGame() {
+function newGame() { 
     $('#roll-dice').removeAttr('disabled');
     gameLoop = true;
     roundCount = 1;
@@ -193,7 +160,6 @@ function newGame() {
 function diceSum(diceCount) {
     var total = 0;
     len = diceCount.length;
-
     for (var i = 0; i < len; i++) {
         if (diceCount[i] !== 2 && diceCount[i] !== 5) {
             total += diceCount[i];
@@ -205,10 +171,8 @@ function diceSum(diceCount) {
 
 
 function pointsSum(currentRollPoints) {
-    console.log(currentRollPoints);
     var total = 0;
     len = currentRollPoints.length;
-
     for (var i = 0; i < len; i++) {
         total += currentRollPoints[i];
     }
