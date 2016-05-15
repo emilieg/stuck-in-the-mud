@@ -1,7 +1,7 @@
-# Stuck in the Mud - Dice Game by Emilie Gerber
-http://emilieg.github.io/stuck-in-the-mud/
+# Stuck in the Mud - Dice Game 
 
 
+How to play the game:
 
 The first player rolls all five dice. If any 2s or 5s are rolled, no points are scored for this throw.
 If no 2s or 5s are rolled, the total is added to the player's score. 
@@ -11,11 +11,15 @@ Continue in this way until all the dice are STUCK IN THE MUD.
 After the score is totaled, play passes to the next player.
 There are 3 rounds of play.
 
+I found the original game here: http://www.activityvillage.co.uk/stuck-in-the-mud
+
 Technologies used:
-Javascript &
+HTML,
+CSS,
+Javascript,
 jQuery 
 
-found game here: http://www.activityvillage.co.uk/stuck-in-the-mud
+No special installations are required. The game can be played directly in your browser. 
 
+Approach: I started by breaking down the logic of the game and determining scoring and turns. The logic and code were structured using a game loop (start of game, rolling dice, scoring, clearing turn scores and switching player turns). The styling was implemented last. 
 
-I need to refactor the code and break up some of the long functions into shorter helper functions. Also, I would like to make the layout responsive and add animation to the dice. 
