@@ -1,5 +1,7 @@
 # Stuck in the Mud - Dice Game 
 
+The game is hosted here: http://emilieg.github.io/stuck-in-the-mud/ 
+
 *Screenshot*:
   
 ![Alt](mud-in-screen.png "Stuck in the Mud")
@@ -14,7 +16,7 @@ Continue in this way until all the dice are STUCK IN THE MUD.
 After the score is totaled, play passes to the next player.
 There are 3 rounds of play.
 
-I found the original game here: http://www.activityvillage.co.uk/stuck-in-the-mud
+This is where I found the original game: http://www.activityvillage.co.uk/stuck-in-the-mud
 
 # Technologies used:
 * *HTML* & *Bootstrap*, layout
