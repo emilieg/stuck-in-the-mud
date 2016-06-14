@@ -1,146 +1,138 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Stuck in the Mud</title>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.theme.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-
-  <link href='https://fonts.googleapis.com/css?family=Monofett|Faster+One|Luckiest+Guy|Sigmar+One|Fontdiner+Swanky|Slackey|Schoolbell|Permanent+Marker|Play:400,700' rel='stylesheet' type='text/css'>
-  
-  <link rel="stylesheet" type="text/css" href="sweetalert.css">
-
-  <link rel="stylesheet" href="animate.css">
-
-  <link rel="stylesheet" href="style.css">
-
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Stuck in the Mud</title>
+    <link href=
+    "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.theme.min.css"
+    rel="stylesheet" type="text/css">
+    <link href=
+    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    rel="stylesheet">
+    <link href=
+    'https://fonts.googleapis.com/css?family=Monofett|Faster+One|Luckiest+Guy|Sigmar+One|Fontdiner+Swanky|Slackey|Schoolbell|Permanent+Marker|Play:400,700'
+    rel='stylesheet' type='text/css'>
+    <link href="sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="animate.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <div id="game-board">
-      <!-- TOP PAGE ROWS  -->
-      <div class="row">
-        <div id="title" class="col-xs-12 col-md-12">
-          <ul class="nav">
-            <li><h1> STUCK IN THE MUD </h1> </li>
-
-            <li><span class="glyph-span"><span id="glyphicon" class="glyphicon glyphicon-info-sign pull-right "></span></span></li>
-          </ul>
+    <div class="container">
+        <div id="game-board">
+            <!-- TOP PAGE ROWS  -->
+            <div class="row">
+                <div class="col-xs-12 col-md-12" id="title">
+                    <ul class="nav">
+                        <li>
+                            <h1>STUCK IN THE MUD</h1>
+                        </li>
+                        <li><span class="glyph-span"><span class=
+                        "glyphicon glyphicon-info-sign pull-right" id=
+                        "glyphicon"></span></span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 text-center" id="round-count">
+                    ROUND <span class="text-uppercase">0</span> OF 3
+                </div>
+                <div class="col-xs-12 col-md-12 text-center" id="player-turn">
+                    PLAYER TURN: <span class="text-uppercase"></span>
+                </div>
+            </div><br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-xs-12 col-lg-12 text-uppercase" id="winner">
+                </div>
+            </div>
+            <div class="row">
+                <div class="container col-xs-6 col-lg-6">
+                    <div class="scores">
+                        <span>PLAYER SCORES:</span>
+                    </div>
+                    <div>
+                        <span id="p1">PLAYER 1</span>: <span class=
+                        "text-uppercase" id="player1-scores"></span>
+                    </div><!-- div id="player1-scores">  -->
+                    <!-- </div> -->
+                    <div>
+                        <span id="p2">PLAYER 2</span> : <span class=
+                        "text-uppercase" id="player2-scores"></span>
+                    </div><br>
+                    <br>
+                    <div id="newGame">
+                        <button class="btn btn-default btn-lg btn-responsive"
+                        id="new-game" type="button">NEW GAME</button>
+                    </div>
+                </div>
+                <div class="container col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div id="dice-board">
+                        <div class="dice" id="die1"></div>
+                        <div class="dice" id="die2"></div>
+                        <div class="dice" id="die3"></div>
+                        <div class="dice" id="die4"></div>
+                        <div class="dice" id="die5"></div>
+                    </div>
+                    <div class="text-center" id="current-roll-score">
+                        CURRENT ROLL SCORE: <span>0</span>
+                    </div>
+                    <div class="text-center" id="rollDice">
+                        <button class=
+                        "btn btn-danger btn-lg active btn-responsive" id=
+                        "roll-dice" type="button">ROLL DICE</button>
+                    </div>
+                </div>
+            </div><!-- ROW CLOSE -->
+            <div class="row">
+                <div class="centerBlock">
+                    <div class="col-xs-12 col-md-12 centerBlock">
+                        &#169;Emilie Gerber 2016
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div id="round-count" class="col-xs-12 col-md-12 text-center"> ROUND <span class="text-uppercase"> 0 </span> OF 3 </div> 
-        <div id="player-turn" class="col-xs-12 col-md-12 text-center"> PLAYER TURN:  <span class="text-uppercase"> </span> </div>
-      </div>
-      
-      <br>
-      <br>
-      <br>
-
-      <div class="row">
-       <div id="winner" class="col-xs-12 col-lg-12 text-uppercase"> </div>
-     </div>
-
-     <div class="row">
-      <div class="container col-xs-6 col-lg-6">
-       <div class="scores"> <span> PLAYER SCORES: </span> </div>
-
-       <div>
-        <span id="p1">PLAYER 1</span>:
-        <span class="text-uppercase" id="player1-scores"></span>
-       </div>
-       <!-- div id="player1-scores">  -->
-         
-       <!-- </div> -->
-       <div >
-       <span id="p2"> PLAYER 2 </span>: 
-        <span class="text-uppercase" id="player2-scores"> </span> 
-       </div>
-
-       <br></br>
-       <div id="newGame">
-        <button class="btn btn-default btn-lg btn-responsive" type="button" id="new-game">NEW GAME</button>
-      </div>
     </div>
-
-
-
-    <div class="container col-xs-12 col-sm-12 col-md-6 col-lg-6">
-      <div id="dice-board"> 
-        <div id="die1" class="dice"></div>
-        <div id="die2" class="dice"></div>
-        <div id="die3" class="dice"></div>
-        <div id="die4" class="dice"></div>
-        <div id="die5" class="dice"></div>
-      </div>
-
-
-      <div id="current-roll-score" class="text-center"> CURRENT ROLL SCORE: <span> 0 </span> </div>
-
-
-      <div id="rollDice" class="text-center">
-        <button class="btn btn-danger btn-lg active btn-responsive" type="button" id="roll-dice"> ROLL DICE</button>
-      </div>
-    </div>
-
-  </div> <!-- ROW CLOSE -->
-  <div class="row">
-  <div class="centerBlock">
-  <div class="ol-xs-12 col-md-12 centerBlock">   &#169;Emilie Gerber 2016 </div>
-  </div>
-  </div>
-
-</div>
-</div>
-
-<!-- MODAL -->
-
-<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button> -->
-
-<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">GAME RULES</h4>
-      </div>
-      <div class="modal-body">
-        <p>The first player rolls all five dice. If any 2s or 5s are rolled, no points are scored for this throw. If no 2s or 5s are rolled, the total is added to the player's score. </p>
-          <p>
-          Any 2s and 5s become STUCK IN THE MUD, and only the remaining dice are rolled. Again, if any 2s or 5s are thrown, no points are scored. If there are no 2s or 5s, the total is added to the previous score.</p>
-          <p>
-          Continue in this way until all the dice are STUCK IN THE MUD. After the score is totaled, play passes to the next player.
-
-          There are a total of 3 round of play. </p>
-
-      </div>
-
-    </div>
-  <!-- /.modal-content -->
-  </div>
-<!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-
-
-
-
-<!-- loading jQuery UI after lib  -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">  </script>
-<script src="sweetalert.min.js"></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-
-<script src="script1.js"> </script>
+    <div class="modal fade" id="myModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" class="close" data-dismiss=
+                    "modal" type="button"><span aria-hidden=
+                    "true">&times;</span></button>
+                    <h4 class="modal-title">GAME RULES</h4>
+                </div>
+                <div class="modal-body">
+                    <p>The first player rolls all five dice. If any 2s or 5s
+                    are rolled, no points are scored for this throw. If no 2s
+                    or 5s are rolled, the total is added to the player's
+                    score.</p>
+                    <p>Any 2s and 5s become STUCK IN THE MUD, and only the
+                    remaining dice are rolled. Again, if any 2s or 5s are
+                    thrown, no points are scored. If there are no 2s or 5s, the
+                    total is added to the previous score.</p>
+                    <p>Continue in this way until all the dice are STUCK IN THE
+                    MUD. After the score is totaled, play passes to the next
+                    player. There are a total of 3 round of play.</p>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- loading jQuery UI after lib  -->
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js">
+    </script> 
+    <script src=
+    "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">
+    </script> 
+    <script src="sweetalert.min.js">
+    </script> 
+    <script src=
+    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
+    </script> 
+    <script src="script.js">
+    </script>
 </body>
 </html>

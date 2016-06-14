@@ -1,10 +1,12 @@
 //Global variables
 //DiceBoard
-
-var playerTurn = 'player1';
+var player1;
+var player2;
+var playerTurn;
 var diceCount = ['', '', '', '', '']; //5 dices are available at the start
 var diceAvail = [true, true, true, true, true];
 var diceId;
+var output = '';
 var currentRollPoints1 = [];
 var currentRollPoints2 = [];
 var cleanRoll;
@@ -16,28 +18,70 @@ var countLoses = 0;
 var roundCount = 1;
 var winner;
 var gameLoop = true;
-var animationBounceIn = 'bounceInDown';
 var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 
+//sweet alert to enter player name
+swal({  title: "Player1",
+        text: 'Enter your Name',
+        type: "input",
+        showCancelButton: true,
+        closeOnConfirm: false,
+        animation: "slide-from-top",
+        inputPlaceholder: "Enter your Name",
+        customClass: 'sweet',
+        confirmButtonColor:  "#FF0000" 
+      },
+      function(inputValue1) {
+        $('#p1').text(inputValue1);
+        player1 = inputValue1;
+        sweetAlert2();
+        $('#player-turn span').text(inputValue1);
+        playerTurn = inputValue1;
+        console.log(player1);
+        return inputValue1;
+      }      
+  )
+$('#player2-scores').on('click', function(){
+  sweetAlert2();
+})
 
+function sweetAlert2(){
+  swal({  title: "Player2",
+        text: 'Enter your Name',
+        type: "input",
+        showCancelButton: true,
+        closeOnConfirm: true,
+        animation: "slide-from-top",
+        inputPlaceholder: "Enter your Name",
+        customClass: 'sweet',
+        confirmButtonColor:  "#FF0000" },
+        function(inputValue2) {
+        $('#p2').text(inputValue2);
+        player2 = inputValue2;
+        console.log(inputValue2);
+        return inputValue2;
+      }      
+)
+}
+
+//changes players, counts rounds, resets current turn sums, resets dice
 var flipPlayerTurn = function() {
-
-    if (playerTurn === 'player1') {
-        playerTurn = 'player2'; 
+    $('#player-turn span').addClass('animated flash').one(animationEnd, function(){
+    $(this).removeClass('animated flash');
+    });
+    if (playerTurn === player1) {
+        playerTurn = player2; 
     } else {
         roundCount = roundCount + 1; //count game runs 
-        playerTurn ='player1'; 
+        playerTurn = player1; 
     }
-    console.log("roundCound: " + roundCount)
     if (roundCount === 4) {
         gameOver(playerScore1, playerScore2);
         console.log("Scores: " + gameOver(playerScore1, playerScore2));
         gameLoop = false;
         $('#roll-dice').attr('disabled','disabled');
     }   else {
-    console.log("in flipPlayer Round is: " + roundCount);
-    
-    //set timer here to wait 1 second before clearing code below
+
     $('#current-roll-score span').html('0');
     diceCount = ['', '', '', '', ''];
     diceAvail = [true, true, true, true, true];
@@ -46,57 +90,82 @@ var flipPlayerTurn = function() {
     turnSum2 = 0;
     countLoses = 0;
     $('.dice').html("");
-    $('.dice').css("background-color", "")
-
+    $('.dice').css("color", "")
     }
 };
 
-//Roll Dice function
+//rolls dice and adds facevalue to each dice using HTML Entity (hex)
 var rollDice = function() {
-    result = Math.floor(Math.random() * 6 + 1);
-    return result;
-};
+    
+    var faceValue,        
+        randNum;   
+        faceValue = Math.floor(Math.random() * 6);
+        output = "&#x268" + faceValue;
+        switch(output) {
+          case '&#x2680':
+            randNum = 1;
+            break;
+          case '&#x2681':
+            randNum = 2;
+            break;
+          case '&#x2682':
+            randNum = 3;
+            break;
+          case '&#x2683':
+            randNum = 4;
+            break;
+          case '&#x2684':
+            randNum = 5;
+            break;
+          case '&#x2685':
+            randNum = 6;
+            break;
+          default:
+             console.log("need output");     
+        }
+        return randNum;
+}
 
+//rolls dice for dice that are not stuck, 
 $('#roll-dice').click(function() {
         if(gameLoop === false) {
             return;
         }
-        //Call Roll Dice function for each die using a for loop
         $('#round-count span').html(roundCount);
-        $('#player-turn span').html(playerTurn);
         $('#current-roll-score span').html(turnSum1);
         $('#current-roll-score span').html(turnSum2);
-
         cleanRoll = true;
-        
         for (i = 0; i < diceCount.length; i++) {
             console.log(diceCount[i]);
             if (diceAvail[i] === true) {
+              //Call Roll Dice function for each die using a for loop
                 diceCount[i] = rollDice();
-                diceId = $('#die' + (i + 1)).html(diceCount[i]);
-                $(diceId).effect("highlight", {}, 1500);
+                diceId = $('#die' + (i + 1)).html(output);                
+                $(diceId).addClass('animated bounceInDown').one(animationEnd, function(){
+                  $(this).removeClass('animated bounceInDown');
+                });
 
+//checks if dice are a 2 or 5 and sets cleanRoll to false
                 if (diceCount[i] === 2 || diceCount[i] === 5) {
                     diceAvail[i] = false;
-                    $(diceId).css('border-color', 'red');
+                    $(diceId).css('color', 'red');
                     cleanRoll = false;
-                }
+                } 
             }
         }
-        if (cleanRoll === true && playerTurn === 'player1') {
+//calculates player points if clean roll is true        
+        if (cleanRoll === true && playerTurn === player1) {
             turnSum1 = diceSum(diceCount);
-            currentRollPoints1.push(turnSum1);            
-            $('#current-roll-score span').html(turnSum1);          
+            currentRollPoints1.push(turnSum1);
+            $('#current-roll-score span').html(turnSum1);            
             playerScore1 = pointsSum(currentRollPoints1);
-            $('#player1-scores').html(playerScore1);
-
-        } else if (cleanRoll === true && playerTurn === 'player2') {
+            $('#player1-scores').html(playerScore1); //
+        } else if (cleanRoll === true && playerTurn === player2) {
             turnSum2 = diceSum(diceCount);
             currentRollPoints2.push(turnSum2);
-            $('#current-roll-score span').html(turnSum2);       
-            playerScore2 = pointsSum(currentRollPoints2);
-            $('#player2-scores span').html(playerScore2);
-            
+            $('#current-roll-score span').html(turnSum2);            
+            playerScore2 = pointsSum(currentRollPoints2);            
+            $('#player2-scores').html(playerScore2);            
         }
 
         //check if all dice are stuck
@@ -106,56 +175,106 @@ $('#roll-dice').click(function() {
             if (diceAvail[i] === false) {
                 diceNotAvail++;
             }
-            if (diceNotAvail === diceAvail.length) {  
+            if (diceNotAvail === diceAvail.length) {
                 flipPlayerTurn();
-                $('#player-turn span').html(playerTurn);      
+                $('#player-turn span').html(playerTurn);
+                $('#player-turn span').addClass('animated flash').one(animationEnd, function(){
+                $(this).removeClass('animated bounceInDown');
+                });
             }
         }
     }) //closing click function
 
-
 function gameOver(playerScore1, playerScore2){
-    if(playerScore1 > playerScore2) {
-        winner = 'player1';
+        if(playerScore1 > playerScore2) {
+        winner = player1;
     }
     else {
-        winner = 'player2';
+        winner = player2;
     }
+    $("#winner").show();
     $('#winner').html("THE WINNER IS:" + winner);
     $('#winner').addClass('animated bounceInDown').one(animationEnd, function(){
-        $(this).removeClass(bounceInDown);
+        $(this).removeClass('animated bounceInDown');
     });
     return winner;
 }
 
-
+//starts new game on click 
 $('#new-game').click(function() {
+    $("#winner").hide();
     newGame();
 });
 
+function newGame() {
+  swal({  title: "Player1",
+        text: 'Enter your Name',
+        type: "input",
+        showCancelButton: true,
+        closeOnConfirm: false,
+        animation: "slide-from-top",
+        inputPlaceholder: "Enter your Name",
+        customClass: 'sweet',
+        confirmButtonColor:  "#FF0000" 
+      },
+      function(inputValue1) {
+        $('#p1').text(inputValue1);
+        player1 = inputValue1;
+        sweetAlert2();
+        $('#player-turn span').text(inputValue1);
 
-function newGame() { 
+        playerTurn = inputValue1;
+        console.log(player1);
+        return inputValue1;
+      }      
+  )
+
+$('#player2-scores').on('click', function(){
+  sweetAlert2();
+})
+
+function sweetAlert2(){
+  swal({  title: "Player2",
+        text: 'Enter your Name',
+        type: "input",
+        showCancelButton: true,
+        closeOnConfirm: true,
+        animation: "slide-from-top",
+        inputPlaceholder: "Enter your Name",
+        customClass: 'sweet',
+        confirmButtonColor:  "#FF0000" },
+        function(inputValue2) {
+        $('#p2').text(inputValue2);
+        player2 = inputValue2;
+        console.log(inputValue2);
+        return inputValue2;
+      }
+)
+}
     $('#roll-dice').removeAttr('disabled');
     gameLoop = true;
     roundCount = 1;
-    playerTurn = 'player1';
-    $('#player-turn span').html(playerTurn);
+    playerTurn = player1;
+    $('#player-turn span').html(player1);
     $('#current-roll-score span').html('0');
-    $('#round-count span').html('0')
+    $('#round-count span').html('0');
+    $('#player1-scores').html('');
+    $('#player2-scores').html('');
     diceCount = ['', '', '', '', ''];
     diceAvail = [true, true, true, true, true];
     playerScore = 0;
-    $('.scores').html("");
     currentRollPoints = [];
     cleanRoll = true;
     turnSum = 0;
     countLoses = 0;
     $('.dice').html("");
-    $('.dice').css("border-color", "black");
+    $('.dice').css("color", "");
 };
 
-
-
+//how to play the game modal
+$('#glyphicon').click(function(){
+  $('#myModal').modal('show');
+});
 
 function diceSum(diceCount) {
     var total = 0;
@@ -168,14 +287,14 @@ function diceSum(diceCount) {
     return total;
 };
 
-
-
 function pointsSum(currentRollPoints) {
+    console.log(currentRollPoints);
     var total = 0;
     len = currentRollPoints.length;
     for (var i = 0; i < len; i++) {
         total += currentRollPoints[i];
     }
-
     return total;
 }
+
+
