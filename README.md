@@ -26,7 +26,7 @@ This is where I found the original game: http://www.activityvillage.co.uk/stuck-
 * *Sweet Alerts*, alert notifications 
 
 # Installation Instructions:
-* Clone this repo
+* Clone this repo by copying the link and running git clone in your terminal
 * Open the index.html page in your browser
 * Ready Set Play! 
 
