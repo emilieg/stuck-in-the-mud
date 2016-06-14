@@ -26,7 +26,9 @@ This is where I found the original game: http://www.activityvillage.co.uk/stuck-
 * *Sweet Alerts*, alert notifications 
 
 # Installation Instructions:
-No special installations are required. The game can be played directly in your browser. 
+* Git clone this repo
+* Open the index.html page in your browser
+* All set! 
 
 # Approach: 
 I started by breaking down the logic of the game and determining scoring and turns. The logic and code were structured using a game loop (start of game, rolling dice, scoring, clearing turn scores and switching player turns). The styling was implemented last. 
